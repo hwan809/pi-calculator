@@ -34,14 +34,22 @@ while True:
 
 ## 시각화
 matplotlib 모듈을 활용해 n각형이 변해감에 따라 pi값의 오차를 그래프로 기록
+정n각형의 최대 n (N) = 10^6으로 고정
 
 ### Figure_1
-최대 N을 10^6으로 설정, y축(error) scale을 base=100의 log scale로 고정.
+![Figure_1](https://user-images.githubusercontent.com/55339366/224556532-3e7ba379-f5a4-4be7-924e-76dd820699d3.png)
+
+초반에 오차가 급격히 감소한 후 큰 변화 없음.
+
+### Figure_2
+y축(error) scale을 base=100의 log scale로 고정.
 
 ![Figure_1](https://user-images.githubusercontent.com/55339366/224528774-f8ddcd74-d39d-4144-b05b-f3b04f5d07d1.png)
 
 오차가 급격히 줄어들다가 점점 완만해지는 개형을 관찰할 수 있었음.
 
-
-
+### Figure_3
+base=100의 loglog plot.
+![Figure_3](https://user-images.githubusercontent.com/55339366/224557026-c0e01a7c-30c7-48c7-9378-ef3ee7118490.png)
+선형적인 개형을 보임.
 
