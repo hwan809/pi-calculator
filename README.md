@@ -1,5 +1,4 @@
 # pi-calculator
-Reference : [EBS 끝없는 신비, π (2부)](https://www.ebsmath.co.kr/resource/rscView?cate=10098&cate2=10176&cate3=10189&rscTpDscd=RTP10&grdCd=MGRD01&sno=21255&historyYn=study&movieInLec=RC2)  
 원주율의 근사치를 구하는 아르키메데스 방법을 구현, 시각화.
 
 ## Archimedes
@@ -53,3 +52,49 @@ base=100의 loglog plot.
 > 정x각형과 그로 구한 파이값의 오차 y에서  
 > 두 변수 x과 y는 loglog plot에서 **선형적인 관계** 임을 알 수 있음.  
 > 이는 x과 y가 y = ax^n의 형태로 근사될 수 있음을 뜻함.
+
+## 다른 방법은 없나요?
+### inverse tangent
+#### 원리
+역삼각함수의 테일러 급수 전개.
+
+#### Code
+```ruby
+new_pi = 0
+now_denominator = 1
+
+n = 0
+
+while n < N:
+    new_pi += 4 / now_denominator * (-1) ** n
+    new_pi_data.append(abs(new_pi - ABSOULTE_PI))
+
+    now_denominator += 2
+    n += 1
+
+plt.plot(new_pi_data)
+```
+
+### 두 방식을 비교하면
+#### Figure_4
+![Figure_4](https://user-images.githubusercontent.com/55339366/224998053-20e0195a-ccdc-4670-aea1-35c490485d66.png)
+둘 모두 선형적으로 오차가 감소하나,  
+아르키메데스의 방법을 이용해 구한 오차가 arctan의 오차에 비해 더 빠르게 감소하고 있는 것을  
+기울기를 통해 알 수 있다.
+
+## 결론
+아르키메데스의 방법은 정n각형의 n이 증가할수록 오차가 감소하며,  
+두 변수 사이에는 power relationship이 존재함을 알 수 있다.   
+inverse tangent의 무한급수도 항의 개수에 대해 위와 같은 관계이나,  
+아르키메데스의 방법보다 실제 값에 느리게 다가감을 학인할 수 있었다.
+
+## 추가 연구
+- 더 효율적인 원주율 계산 알고리즘
+- 두 방법에 대한 시간복잡도 계산
+- 병렬 처리 시스템에서의 계산 속도 차이 (단순 계산이므로 더 빠를 수 있다)
+
+## References
+- [EBS 끝없는 신비, π (2부)](https://www.ebsmath.co.kr/resource/rscView?cate=10098&cate2=10176&cate3=10189&rscTpDscd=RTP10&grdCd=MGRD01&sno=21255&historyYn=study&movieInLec=RC2)
+- [log-log scale graph](https://en.wikipedia.org/wiki/Log%E2%80%93log_plot)
+- [Approximating Pi with Inscribed Polygon](https://demonstrations.wolfram.com/ApproximatingPiWithInscribedPolygons/)
+- [Liu Hui's pi algorithm](https://en.wikipedia.org/wiki/Liu_Hui%27s_%CF%80_algorithm)
